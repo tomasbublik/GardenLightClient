@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId "lights.garden.iot.bublik.cz.gardenlight"
+        minSdkVersion 19
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'com.android.support:support-annotations:23.1.1'
+    }
+}
+
+android {
+    useLibrary 'org.apache.http.legacy'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:23.1.1'
+    implementation 'com.github.kittinunf.fuel:fuel-android:1.9.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+    testImplementation 'junit:junit:4.12'
+    testImplementation "com.nhaarman:mockito-kotlin-kt1.1:1.5.0"
+    androidTestImplementation 'com.android.support:support-annotations:23.1.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.0'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.0'
+}
