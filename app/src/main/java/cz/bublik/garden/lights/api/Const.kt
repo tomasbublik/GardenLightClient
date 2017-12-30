@@ -1,4 +1,4 @@
-package lights.garden.iot.bublik.cz.gardenlight
+package cz.bublik.garden.lights.api
 
 object Const {
     val PORT: String = "3000"

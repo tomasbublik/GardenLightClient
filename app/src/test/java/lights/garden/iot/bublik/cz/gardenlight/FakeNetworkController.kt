@@ -4,8 +4,11 @@ import com.github.kittinunf.fuel.core.FuelError
 import com.github.kittinunf.fuel.core.Request
 import com.github.kittinunf.fuel.core.Response
 import com.github.kittinunf.result.Result
+import cz.bublik.garden.lights.api.NetworkControllerInterface
+import cz.bublik.garden.lights.api.NetworkHandler
+import cz.bublik.garden.lights.api.UiListener
 
- class FakeNetworkController(val response: Response, uiListener: UiListener) : NetworkControllerInterface {
+class FakeNetworkController(val response: Response, uiListener: UiListener) : NetworkControllerInterface {
 
     override fun getHostnameByIp(ipAddress: String) {
         val result = Result.Success<String, FuelError>(response.httpResponseMessage) as Result<String, FuelError>

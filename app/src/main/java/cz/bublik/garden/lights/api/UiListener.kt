@@ -1,12 +1,10 @@
-package lights.garden.iot.bublik.cz.gardenlight
+package cz.bublik.garden.lights.api
 
 interface UiListener {
 
     fun onUpdateIpsList(outcome: Map<String, String>)
 
     fun onCleanIpsList()
-
-    fun getIpArrayAdapter(): DevicesIpArrayAdapter?
 
     fun onSuccess()
 

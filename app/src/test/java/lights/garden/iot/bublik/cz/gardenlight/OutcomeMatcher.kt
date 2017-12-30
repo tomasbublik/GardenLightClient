@@ -1,7 +1,7 @@
 package lights.garden.iot.bublik.cz.gardenlight
 
-import lights.garden.iot.bublik.cz.gardenlight.Const.HOSTNAME_KEY
-import lights.garden.iot.bublik.cz.gardenlight.Const.IP_KEY
+import cz.bublik.garden.lights.api.Const.HOSTNAME_KEY
+import cz.bublik.garden.lights.api.Const.IP_KEY
 import org.mockito.ArgumentMatcher
 import java.util.*
 

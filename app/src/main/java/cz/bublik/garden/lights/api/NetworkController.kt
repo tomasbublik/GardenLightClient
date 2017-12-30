@@ -1,12 +1,12 @@
-package lights.garden.iot.bublik.cz.gardenlight
+package cz.bublik.garden.lights.api
 
 import com.github.kittinunf.fuel.core.*
 import com.github.kittinunf.fuel.httpGet
 import com.github.kittinunf.result.Result
-import lights.garden.iot.bublik.cz.gardenlight.Const.HOSTNAME_TIMEOUT
-import lights.garden.iot.bublik.cz.gardenlight.Const.REQUEST_TIMEOUT
-import lights.garden.iot.bublik.cz.gardenlight.Const.STATE_TIMEOUT
-import lights.garden.iot.bublik.cz.gardenlight.Utils.createHostnameRequestUrlFromGivenIp
+import cz.bublik.garden.lights.api.Const.HOSTNAME_TIMEOUT
+import cz.bublik.garden.lights.api.Const.REQUEST_TIMEOUT
+import cz.bublik.garden.lights.api.Const.STATE_TIMEOUT
+import cz.bublik.garden.lights.api.Utils.createHostnameRequestUrlFromGivenIp
 import kotlin.text.Charsets.UTF_8
 
 class NetworkController(url: String, private val uiListener: UiListener) : NetworkControllerInterface {

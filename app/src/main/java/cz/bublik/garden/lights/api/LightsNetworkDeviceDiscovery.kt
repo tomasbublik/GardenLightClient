@@ -1,4 +1,4 @@
-package lights.garden.iot.bublik.cz.gardenlight
+package cz.bublik.garden.lights.api
 
 import android.util.Log
 import org.apache.http.conn.util.InetAddressUtils
@@ -73,8 +73,4 @@ class LightsNetworkDeviceDiscovery(private val networkController: NetworkControl
             }
         }
     }
-
-   fun getIpArrayAdapter():DevicesIpArrayAdapter {
-       return networkController.getUiListener().getIpArrayAdapter()!!
-   }
 }

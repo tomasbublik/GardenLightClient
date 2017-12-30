@@ -2,6 +2,9 @@ package lights.garden.iot.bublik.cz.gardenlight
 
 import android.widget.ImageView
 import android.widget.ToggleButton
+import cz.bublik.garden.lights.api.NetworkController
+import cz.bublik.garden.lights.api.NetworkControllerInterface
+import cz.bublik.garden.lights.api.UiListener
 import java.util.*
 
 class CommunicationUiListener(private val mainActivity: MainActivity) : UiListener {
@@ -70,7 +73,7 @@ class CommunicationUiListener(private val mainActivity: MainActivity) : UiListen
         }
     }
 
-    override fun getIpArrayAdapter(): DevicesIpArrayAdapter {
+    fun getIpArrayAdapter(): DevicesIpArrayAdapter {
         return ipArrayAdapter
     }
 }

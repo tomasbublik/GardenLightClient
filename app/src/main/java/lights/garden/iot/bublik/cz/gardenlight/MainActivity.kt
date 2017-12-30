@@ -10,7 +10,10 @@ import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import com.squareup.leakcanary.LeakCanary
-import lights.garden.iot.bublik.cz.gardenlight.Utils.createUrlFromIp
+import cz.bublik.garden.lights.api.Const
+import cz.bublik.garden.lights.api.LightsNetworkDeviceDiscovery
+import cz.bublik.garden.lights.api.NetworkController
+import cz.bublik.garden.lights.api.Utils.createUrlFromIp
 
 class MainActivity : Activity() {
 
@@ -19,6 +22,7 @@ class MainActivity : Activity() {
     private lateinit var currentIpAddress: TextView
     private lateinit var scanButton: Button
     private lateinit var availableAddressesView: TextView
+    private lateinit var communicationUIListener: CommunicationUiListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +50,7 @@ class MainActivity : Activity() {
     }
 
     private fun createNetworkController(ipAddressToUse: String?): NetworkController {
-        val communicationUIListener = CommunicationUiListener(this)
+        communicationUIListener = CommunicationUiListener(this)
         val networkController = NetworkController(createUrlFromIp(ipAddressToUse!!), communicationUIListener)
 
         networkController.checkState()
@@ -64,10 +68,10 @@ class MainActivity : Activity() {
 
     private fun createAddressesListView(lightsNetworkDeviceDiscovery: LightsNetworkDeviceDiscovery, networkController: NetworkController) {
         val addressesListView = findViewById(R.id.ipAdressessList) as ListView
-        addressesListView.adapter = lightsNetworkDeviceDiscovery.getIpArrayAdapter()
+        addressesListView.adapter = communicationUIListener.getIpArrayAdapter()
         addressesListView.onItemClickListener = OnItemClickListener { _, _, position, id ->
             Log.d(TAG, "Clicked position: $position, id: $id")
-            Log.d(TAG, "Which means this ip address: " + lightsNetworkDeviceDiscovery.getIpArrayAdapter().getItem(id.toInt()))
+            Log.d(TAG, "Which means this ip address: " + communicationUIListener.getIpArrayAdapter().getItem(id.toInt()))
             lightsNetworkDeviceDiscovery.stopDiscovery()
             scanButton.setText(R.string.scan_devices)
             changeIpAddress(networkController, lightsNetworkDeviceDiscovery, id)
@@ -76,7 +80,7 @@ class MainActivity : Activity() {
     }
 
     private fun changeIpAddress(networkController: NetworkController, lightsNetworkDeviceDiscovery: LightsNetworkDeviceDiscovery, id: Long) {
-        val ipAddressWithHostname = lightsNetworkDeviceDiscovery.getIpArrayAdapter().getItem(id.toInt()) as Map<String, String>
+        val ipAddressWithHostname = communicationUIListener.getIpArrayAdapter().getItem(id.toInt()) as Map<String, String>
         val ipAddress = ipAddressWithHostname[Const.IP_KEY]
         val hostname = ipAddressWithHostname[Const.HOSTNAME_KEY]
         concatenatedIpAndHostname(ipAddress, hostname)

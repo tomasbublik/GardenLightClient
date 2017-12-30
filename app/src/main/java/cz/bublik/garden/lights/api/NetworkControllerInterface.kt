@@ -1,4 +1,4 @@
-package lights.garden.iot.bublik.cz.gardenlight
+package cz.bublik.garden.lights.api
 
 import com.github.kittinunf.fuel.core.FuelError
 import com.github.kittinunf.fuel.core.Request

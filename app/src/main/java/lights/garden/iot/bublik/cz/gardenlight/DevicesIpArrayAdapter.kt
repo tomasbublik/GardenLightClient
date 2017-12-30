@@ -2,6 +2,7 @@ package lights.garden.iot.bublik.cz.gardenlight
 
 import android.content.Context
 import android.widget.SimpleAdapter
+import cz.bublik.garden.lights.api.Const
 import java.util.*
 
 class DevicesIpArrayAdapter(context: Context, textViewResourceId: Int,

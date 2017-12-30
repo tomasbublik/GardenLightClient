@@ -1,15 +1,15 @@
-package lights.garden.iot.bublik.cz.gardenlight
+package cz.bublik.garden.lights.api
 
 import android.util.Log
 import com.github.kittinunf.fuel.core.FuelError
 import com.github.kittinunf.fuel.core.Response
 import com.github.kittinunf.result.Result
-import lights.garden.iot.bublik.cz.gardenlight.Const.HOSTNAME_COMMAND
-import lights.garden.iot.bublik.cz.gardenlight.Const.HOSTNAME_KEY
-import lights.garden.iot.bublik.cz.gardenlight.Const.IP_KEY
-import lights.garden.iot.bublik.cz.gardenlight.Const.PORT
-import lights.garden.iot.bublik.cz.gardenlight.Const.POSITIVE_RESPONSE
-import lights.garden.iot.bublik.cz.gardenlight.Const.STATE_ACTIVATED_RESPONSE
+import cz.bublik.garden.lights.api.Const.HOSTNAME_COMMAND
+import cz.bublik.garden.lights.api.Const.HOSTNAME_KEY
+import cz.bublik.garden.lights.api.Const.IP_KEY
+import cz.bublik.garden.lights.api.Const.PORT
+import cz.bublik.garden.lights.api.Const.POSITIVE_RESPONSE
+import cz.bublik.garden.lights.api.Const.STATE_ACTIVATED_RESPONSE
 import java.util.*
 
 class NetworkHandler(private val uiListener: UiListener, private val networkController: NetworkControllerInterface) {
